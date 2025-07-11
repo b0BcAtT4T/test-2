@@ -28,10 +28,10 @@ fi
 echo "Using LAN IP: $lan_ip"
 
 # Backup the original config.php file
-cp /Skynet-NAS/Nextcloud/config/config.php /Skynet-NAS/Nextcloud/config/config.php.bak
+cp /Skynet-NAS/AppData/big-bear-nextcloud/html/config/config.php /Skynet-NAS/AppData/big-bear-nextcloud/html/config/config.php.bak
 
 # Add the LAN IP to the config.php file
-awk -v ip="$lan_ip" '/0 => '\''localhost'\''/{print; print "    1 => '\''" ip "'\'',"; next}1' /Skynet-NAS/Nextcloud/config/config.php.bak > /Skynet-NAS/Nextcloud/config/config.php
+awk -v ip="$lan_ip" '/0 => '\''localhost'\''/{print; print "    1 => '\''" ip "'\'',"; next}1' /Skynet-NAS/AppData/big-bear-nextcloud/html/config/config.php.bak > /Skynet-NAS/AppData/big-bear-nextcloud/html/config/config.php
 
 # Get the path to the docker-compose.yml file
 COMPOSE_FILE="/var/lib/casaos/apps/big-bear-nextcloud/docker-compose.yml"
